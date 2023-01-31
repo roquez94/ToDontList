@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "webpack": "^5.75.0"
+  },
+  "dependencies": {
+    "webpack-cli": "^5.0.1"
+  },
+  "name": "todontlist",
+  "description": "Learning project practicing OOP principles with JS, webpack, html, and css.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roquez94/ToDontList.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roquez94/ToDontList/issues"
+  },
+  "homepage": "https://github.com/roquez94/ToDontList#readme"
+}
