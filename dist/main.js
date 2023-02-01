@@ -1,0 +1,1 @@
+document.body.appendChild(function(){const n=document.getElementById("main");return n.innerHTML="<p>App listing what you won't do!</p>",n}());
