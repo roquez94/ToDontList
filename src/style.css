@@ -2,3 +2,8 @@ body {
     color: navy;
     background: linear-gradient(to left top, white, blue);
 }
+
+#main {
+    display: flex;
+    justify-content: center;
+}
