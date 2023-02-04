@@ -1,6 +1,7 @@
 body {
     color: navy;
     background: linear-gradient(to left top, white, blue);
+    min-height: 100vh;
 }
 
 #main {
