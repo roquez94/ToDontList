@@ -25,7 +25,7 @@ function createTodoItems (title,description,dueDate,priortity) {
 };
 
 function getToDoItemsDetails() {
-    //could convert into a form that pops up
+    //could convert into a form that pops up instead
     let title = prompt("Enter Title for Todo Item");
     let description = prompt ("Write short description for Todo Item");
     
@@ -33,12 +33,17 @@ function getToDoItemsDetails() {
     let dueDate = prompt("Type in a date");
 
     //change for users to select priortiy for toDoItem with button later
-
-
+   
+    return createTodoItems(title,description,dueDate,pale);
 };
 
 function showTodoItems (){
+    let toDoItemDiv = document.createElement("div");
+    toDoItemDiv.id = "Items";
 
+    getToDoItemsDetails();
+
+    
 };
 
 
