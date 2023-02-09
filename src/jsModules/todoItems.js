@@ -1,4 +1,4 @@
-
+export {addTodoItems};
 //todoItems holds the other functions properties & methods
 //attempting to follow SOLID oop principles
 
@@ -33,18 +33,36 @@ function getToDoItemsDetails() {
     let dueDate = prompt("Type in a date");
 
     //change for users to select priortiy for toDoItem with button later
-   
-    return createTodoItems(title,description,dueDate,pale);
+    let prioritiy = "pale";
+
+    return createTodoItems(title,description,dueDate,prioritiy);
 };
 
+//-- testing (2/8/23) -- shows users input
 function showTodoItems (){
-    let toDoItemDiv = document.createElement("div");
-    toDoItemDiv.id = "Items";
-
     getToDoItemsDetails();
 
-    
+    let titleInfo = getToDoItemsDetails.title;
+    let descriptionInfo = getToDoItemsDetails.description;
+    let dueDateInfo = getToDoItemsDetails.dueDate;
+    let prioritiy = getToDoItemsDetails.priority;
+
+}
+
+
+function addTodoItems (){
+    let mainDiv = document.getElementById("main");
+
+    let toDoItemDiv = document.createElement("div");
+    toDoItemDiv.id = "Items";
+    toDoItemDiv.innerHTML = "<p>Add Don't Items Here </p>";
+
+    toDoItemDiv.addEventListener("click", getToDoItemsDetails);
+
+    return mainDiv.appendChild(toDoItemDiv);
 };
+
+addTodoItems();
 
 
 
