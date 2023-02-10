@@ -47,6 +47,9 @@ function showTodoItems (){
     let dueDateInfo = getToDoItemsDetails.dueDate;
     let prioritiy = getToDoItemsDetails.priority;
 
+    //return display string files into a div 
+    //add to event listener for addTodoItems
+
 }
 
 
