@@ -38,16 +38,24 @@ function getToDoItemsDetails() {
     return createTodoItems(title,description,dueDate,prioritiy);
 };
 
-//-- testing (2/8/23) -- shows users input
+//-- testing (2/12/23) -- shows users input
 function showTodoItems (){
-    getToDoItemsDetails();
 
-    let titleInfo = getToDoItemsDetails.title;
-    let descriptionInfo = getToDoItemsDetails.description;
-    let dueDateInfo = getToDoItemsDetails.dueDate;
-    let prioritiy = getToDoItemsDetails.priority;
+    let currentTodoItem = getToDoItemsDetails();
+
+    let titleInfo = `Title: ${currentTodoItem.title}`;
+    let descriptionInfo = `Description: ${currentTodoItem.description}`;
+    let dueDateInfo = `Due Date: ${currentTodoItem.dueDate}`;
+    let prioritiyInfo = `Priority: ${currentTodoItem.priortity}`;
 
     //return display string files into a div 
+    let todoInformation = document.createElement('div');
+    todoInformation.appendChild(titleInfo);
+    todoInformation.appendChild(descriptionInfo);
+    todoInformation.appendChild(dueDateInfo);
+    todoInformation.appendChild(prioritiyInfo);
+
+    return todoInformation;
     //add to event listener for addTodoItems
 
 }
@@ -60,7 +68,7 @@ function addTodoItems (){
     toDoItemDiv.id = "Items";
     toDoItemDiv.innerHTML = "<p>Add Don't Items Here </p>";
 
-    toDoItemDiv.addEventListener("click", getToDoItemsDetails);
+    toDoItemDiv.addEventListener("click", showTodoItems);
 
     return mainDiv.appendChild(toDoItemDiv);
 };
