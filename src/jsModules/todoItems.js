@@ -49,7 +49,7 @@ function showTodoItems (){
     let prioritiyInfo = `Priority: ${currentTodoItem.priortity}`;
 
     //return display string files into a div 
-    let todoInformation = document.createElement('div');
+    let todoInformation = document.createElement("div");
     todoInformation.appendChild(titleInfo);
     todoInformation.appendChild(descriptionInfo);
     todoInformation.appendChild(dueDateInfo);
