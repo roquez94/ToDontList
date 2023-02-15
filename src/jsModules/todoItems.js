@@ -24,6 +24,7 @@ function createTodoItems (title,description,dueDate,priortity) {
     return currentTodoItem;
 };
 
+//fix/search up how to show object content into div js
 function getToDoItemsDetails() {
     //could convert into a form that pops up instead
     let title = prompt("Enter Title for Todo Item");
