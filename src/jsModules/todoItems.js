@@ -39,15 +39,20 @@ function getToDoItemsDetails() {
     return createTodoItems(title,description,dueDate,prioritiy);
 };
 
-//-- testing (2/12/23) -- shows users input
+//shows users input
 function showTodoItems (){
+    let listDiv = document.getElementById("listContainer");
 
     let currentTodoItem = getToDoItemsDetails();
 
-    let titleInfo = `Title: ${currentTodoItem.title}`;
-    let descriptionInfo = `Description: ${currentTodoItem.description}`;
-    let dueDateInfo = `Due Date: ${currentTodoItem.dueDate}`;
-    let prioritiyInfo = `Priority: ${currentTodoItem.priortity}`;
+    let titleInfo = document.createElement("p");
+    titleInfo.innerHTML = currentTodoItem.title;
+    let descriptionInfo = document.createElement("p");
+    descriptionInfo.innerHTML = currentTodoItem.description;
+    let dueDateInfo = document.createElement("p");
+    dueDateInfo.innerHTML = currentTodoItem.dueDate
+    let prioritiyInfo = document.createElement("p");
+    prioritiyInfo.innerHTML = currentTodoItem.priortity;
 
     //return display string files into a div 
     let todoInformation = document.createElement("div");
@@ -56,9 +61,8 @@ function showTodoItems (){
     todoInformation.appendChild(dueDateInfo);
     todoInformation.appendChild(prioritiyInfo);
 
-    return todoInformation;
+    return listDiv.appendChild(todoInformation);
     //add to event listener for addTodoItems
-
 }
 
 
