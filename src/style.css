@@ -2,6 +2,7 @@ body {
     color: navy;
     background: linear-gradient(to left top, white, blue);
     min-height: 100vh;
+    min-width: 100%;
 }
 
 #main {
@@ -15,4 +16,20 @@ body {
     justify-content: center;
     align-items: center;
     color: rgb(238, 84, 57);
+    min-width: 100%;
+}
+
+.listInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: pink;
+    border-style: solid;
+    border-color: aquamarine;
+    min-width: 80;
+}
+
+input[type=text] {
+    width: 100%;
+
 }

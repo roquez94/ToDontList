@@ -24,7 +24,7 @@ function createTodoItems (title,description,dueDate,priortity) {
     return currentTodoItem;
 };
 
-//fix/search up how to show object content into div js
+//2.16.23 update to use form to gather data; link to button
 function getToDoItemsDetails() {
     //could convert into a form that pops up instead
     let title = prompt("Enter Title for Todo Item");
@@ -79,8 +79,6 @@ function addTodoItems (){
 };
 
 addTodoItems();
-
-
 
 //reference Library/Book app on removing/changing items from DOM (2/6/23)
 function removeTodoItems() {
