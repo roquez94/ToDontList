@@ -2,7 +2,7 @@ body {
     color: navy;
     background: linear-gradient(to left top, white, blue);
     min-height: 100vh;
-    min-width: 100%;
+    width: 100%;
 }
 
 #main {
@@ -16,7 +16,7 @@ body {
     justify-content: center;
     align-items: center;
     color: rgb(238, 84, 57);
-    min-width: 100%;
+    width: 80%;
 }
 
 .listInfo {
