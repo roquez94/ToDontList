@@ -1,4 +1,4 @@
-export {addTodoItems};
+export {showTodoItems};
 //todoItems holds the other functions properties & methods
 //attempting to follow SOLID oop principles
 
@@ -24,19 +24,24 @@ function createTodoItems (title,description,dueDate,priortity) {
     return currentTodoItem;
 };
 
-//2.16.23 update to use form to gather data; link to button
+//2.18.23 update to use form to gather data; link to button
+//fix bug of not grabbing form info
 function getToDoItemsDetails() {
-    //could convert into a form that pops up instead
-    let title = prompt("Enter Title for Todo Item");
-    let description = prompt ("Write short description for Todo Item");
-    
-    //might need intergrate date-fns library somehow with this
-    let dueDate = prompt("Type in a date");
+    const form = document.querySelector('.listInfo');
 
-    //change for users to select priortiy for toDoItem with button later
-    let prioritiy = "pale";
+    let formTodoItem = form.addEventListener('submit', e => {
+        //prevent page refresh when form submits
+        e.preventDefault();
+        //selects text input for each part
+        let title = document.querySelector('#title');
+        let description = document.querySelector('#description');
+        let dueDate = document.querySelector('#duedate');
+        let priority = document.querySelector('#priority');
 
-    return createTodoItems(title,description,dueDate,prioritiy);
+        return createTodoItems(title.value.trim(),description.value,dueDate.value,priority.value);
+    });
+
+    return formTodoItem;
 };
 
 //shows users input
@@ -66,19 +71,23 @@ function showTodoItems (){
 }
 
 
-function addTodoItems (){
-    let mainDiv = document.getElementById("main");
+// function addTodoItems (){
+//     let mainDiv = document.getElementById("main");
 
-    let toDoItemDiv = document.createElement("div");
-    toDoItemDiv.id = "Items";
-    toDoItemDiv.innerHTML = "<p>Add Don't Items Here </p>";
+//     let toDoItemDiv = document.createElement("div");
+//     toDoItemDiv.id = "Items";
+//     toDoItemDiv.innerHTML = "<p>Add Don't Items Here </p>";
 
-    toDoItemDiv.addEventListener("click", showTodoItems);
+//     toDoItemDiv.addEventListener("click", showTodoItems);
 
-    return mainDiv.appendChild(toDoItemDiv);
-};
+//     return mainDiv.appendChild(toDoItemDiv);
+// };
 
-addTodoItems();
+// addTodoItems();
+
+showTodoItems();
+
+
 
 //reference Library/Book app on removing/changing items from DOM (2/6/23)
 function removeTodoItems() {
