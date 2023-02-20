@@ -24,31 +24,11 @@ function createTodoItems (title,description,dueDate,priortity) {
     return currentTodoItem;
 };
 
-//2.18.23 update to use form to gather data; link to button
-//fix bug of not grabbing form info
-function getToDoItemsDetails() {
-    const form = document.querySelector('.listInfo');
-
-    let formTodoItem = form.addEventListener('submit', e => {
-        //prevent page refresh when form submits
-        e.preventDefault();
-        //selects text input for each part
-        let title = document.querySelector('#title').value;
-        let description = document.querySelector('#description').value;
-        let dueDate = document.querySelector('#duedate').value;
-        let priority = document.querySelector('#priority').value;
-
-        return createTodoItems(title,description,dueDate,priority);
-    });
-
-    showTodoItems();
-};
 
 //shows users input
-function showTodoItems (){
-    let listDiv = document.getElementById("listContainer");
+function showTodoItems (currentTodoItem){
 
-    let currentTodoItem = getToDoItemsDetails();
+    let listDiv = document.getElementById("listContainer");
 
     let titleInfo = document.createElement("p");
     titleInfo.innerHTML = currentTodoItem.title;
@@ -70,6 +50,29 @@ function showTodoItems (){
     //add to event listener for addTodoItems
 }
 
+//2.18.23 update to use form to gather data; link to button
+//fix bug of not grabbing form info
+function getToDoItemsDetails() {
+    const form = document.querySelector('#listInfo');
+
+    form.addEventListener('submit', e => {
+        //prevent page refresh when form submits
+        e.preventDefault();
+        //selects text input for each part
+        let title = document.querySelector('#title').value;
+        let description = document.querySelector('#description').value;
+        let dueDate = document.querySelector('#duedate').value;
+        let priority = document.querySelector('#priority').value;
+
+        return createTodoItems(title,description,dueDate,priority);
+    });
+
+
+    return showTodoItems(form);
+};
+
+getToDoItemsDetails();
+
 
 // function addTodoItems (){
 //     let mainDiv = document.getElementById("main");
@@ -84,9 +87,6 @@ function showTodoItems (){
 // };
 
 // addTodoItems();
-
-getToDoItemsDetails();
-
 
 
 //reference Library/Book app on removing/changing items from DOM (2/6/23)
