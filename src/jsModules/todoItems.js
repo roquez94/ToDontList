@@ -1,4 +1,4 @@
-export {showTodoItems};
+export {getToDoItemsDetails};
 //todoItems holds the other functions properties & methods
 //attempting to follow SOLID oop principles
 
@@ -33,15 +33,15 @@ function getToDoItemsDetails() {
         //prevent page refresh when form submits
         e.preventDefault();
         //selects text input for each part
-        let title = document.querySelector('#title');
-        let description = document.querySelector('#description');
-        let dueDate = document.querySelector('#duedate');
-        let priority = document.querySelector('#priority');
+        let title = document.querySelector('#title').value;
+        let description = document.querySelector('#description').value;
+        let dueDate = document.querySelector('#duedate').value;
+        let priority = document.querySelector('#priority').value;
 
-        return createTodoItems(title.value.trim(),description.value,dueDate.value,priority.value);
+        return createTodoItems(title,description,dueDate,priority);
     });
 
-    return formTodoItem;
+    showTodoItems();
 };
 
 //shows users input
@@ -85,7 +85,7 @@ function showTodoItems (){
 
 // addTodoItems();
 
-showTodoItems();
+getToDoItemsDetails();
 
 
 
