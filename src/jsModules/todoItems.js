@@ -14,7 +14,6 @@ let todoItems = function (title,description,dueDate,priortity) {
     return {title, description, dueDate, priortity};
 };
 
-//create + button OR module that creates form/prompt for user input 
 //needed to make the todo items ... 
 
 function createTodoItems (title,description,dueDate,priortity) {
@@ -50,8 +49,9 @@ function showTodoItems (currentTodoItem){
     //add to event listener for addTodoItems
 }
 
-//2.18.23 update to use form to gather data; link to button
-//fix bug of not grabbing form info
+
+
+//2.21.23 update to fix bug of not showing/grabbing form info
 function getToDoItemsDetails() {
     const form = document.querySelector('#listInfo');
 
@@ -59,19 +59,19 @@ function getToDoItemsDetails() {
         //prevent page refresh when form submits
         e.preventDefault();
         //selects text input for each part
+        let newItems;
+
         let title = document.querySelector('#title').value;
         let description = document.querySelector('#description').value;
         let dueDate = document.querySelector('#duedate').value;
         let priority = document.querySelector('#priority').value;
 
-        return createTodoItems(title,description,dueDate,priority);
+        newItems = createTodoItems(title,description,dueDate,priority);
+        console.log(newItems);
+        showTodoItems(newItems);
     });
 
-
-    return showTodoItems(form);
 };
-
-getToDoItemsDetails();
 
 
 // function addTodoItems (){
