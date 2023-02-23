@@ -1,10 +1,12 @@
 {
   "devDependencies": {
     "css-loader": "^6.7.3",
+    "path-browserify": "^1.0.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0"
   },
   "dependencies": {
+    "node-polyfill-webpack-plugin": "^2.0.1",
     "webpack-cli": "^5.0.1"
   },
   "name": "todontlist",
