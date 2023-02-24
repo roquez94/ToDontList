@@ -6,56 +6,83 @@ export {getToDoItemsDetails};
 //..notes and checklist
 let items = [];
 
-let todoItems = function (title,description,dueDate,priortity) {
+let todoItems = function (title,description,dueDate,priortity, id) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
     this.priortity = priortity;
+    this.id = id;
 
-    return {title, description, dueDate, priortity};
+    return {title, description, dueDate, priortity, id};
 };
 
 //needed to make the todo items ... 
 
-function createTodoItems (title,description,dueDate,priortity) {
+function createTodoItems (title,description,dueDate,priortity, id) {
 
-    let currentTodoItem = new todoItems(title,description,dueDate,priortity);
+    let currentTodoItem = new todoItems(title,description,dueDate,priortity, id);
     
     return currentTodoItem;
 };
 
 
 //shows users input
-// function showTodoItems (currentTodoItem){
+function showTodoItems (currentTodoItem){
 
-//     let listDiv = document.getElementById("listContainer");
+    //grabs container to hold todo items
+    let listUL = document.getElementById("listContainer");
 
-//     let titleInfo = document.createElement("p");
-//     titleInfo.innerHTML = currentTodoItem.title;
-//     let descriptionInfo = document.createElement("p");
-//     descriptionInfo.innerHTML = currentTodoItem.description;
-//     let dueDateInfo = document.createElement("p");
-//     dueDateInfo.innerHTML = currentTodoItem.dueDate
-//     let prioritiyInfo = document.createElement("p");
-//     prioritiyInfo.innerHTML = currentTodoItem.priortity;
+    let isChecked = currentTodoItem.checked ? 'done': '';
 
-//     //return display string files into a div 
-//     let todoInformation = document.createElement("div");
-//     todoInformation.appendChild(titleInfo);
-//     todoInformation.appendChild(descriptionInfo);
-//     todoInformation.appendChild(dueDateInfo);
-//     todoInformation.appendChild(prioritiyInfo);
+    let listNode = document.createElement('li');
 
-//     return listDiv.appendChild(todoInformation);
-//     //add to event listener for addTodoItems
-// }
+    listNode.setAttribute('class', `todo-item ${isChecked}`);
+    //set data-key attrib. to the id of todo item
+    listNode.setAttribute('data-key', currentTodoItem.id);
+
+    //put the contents of the 'li' element made above
+    listNode. innerHTML = `
+    <input id="${currentTodoItem.id}" type="checkbox"/>
+    <label for="${currentTodoItem.id}" class="tick js-tick"></label>
+    <span>${currentTodoItem.title}</span>
+    <p>${currentTodoItem.description}</p>
+    <p>${currentTodoItem.dueDate}</p>
+    <button class="delete-todo js-delete-todo">
+    <svg><use href="#delete-icon"></use></svg>
+    </button>
+                `;
+
+        //Appends the element to DOM of listUL
+        listUL.append(listNode);
+
+
+    // let titleInfo = document.createElement("li");
+    // titleInfo.innerHTML = currentTodoItem.title;
+    // let descriptionInfo = document.createElement("p");
+    // descriptionInfo.innerHTML = currentTodoItem.description;
+    // let dueDateInfo = document.createElement("p");
+    // dueDateInfo.innerHTML = currentTodoItem.dueDate
+    // let prioritiyInfo = document.createElement("p");
+    // prioritiyInfo.innerHTML = currentTodoItem.priortity;
+
+    // //return display string files into a div 
+    // let todoInformation = document.createElement("div");
+    // todoInformation.appendChild(titleInfo);
+    // todoInformation.appendChild(descriptionInfo);
+    // todoInformation.appendChild(dueDateInfo);
+    // todoInformation.appendChild(prioritiyInfo);
+
+    // return listDiv.appendChild(todoInformation);
+}
 
 function addTodoItems (createTodoItems){
     items.push(createTodoItems);
-    console.log(items);  
+    showTodoItems(createTodoItems);
+    console.log(createTodoItems);  
 };
 
-//2.22.23 Update to clear form after submission
+//2.23.23 Update to clear form after submission
+//or make new function to clear form after submission
 function getToDoItemsDetails() {
     const form = document.querySelector('#listInfo');
 
@@ -69,9 +96,10 @@ function getToDoItemsDetails() {
         let description = document.querySelector('#description').value;
         let dueDate = document.querySelector('#duedate').value;
         let priority = document.querySelector('#priority').value;
+        let id = Date.now();
 
         if (title !== ''){
-            newItems = createTodoItems(title,description,dueDate,priority);
+            newItems = createTodoItems(title,description,dueDate,priority, id);
             
             addTodoItems(newItems);
             console.log(newItems);
