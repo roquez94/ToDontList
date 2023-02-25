@@ -31,6 +31,13 @@ function showTodoItems (currentTodoItem){
 
     //grabs container to hold todo items
     let listUL = document.getElementById("listContainer");
+    //Add Mark task done event listeneer to the list and children
+    listUL.addEventListener('click', e => {
+        if(e.target.classList.contains('js-tick')){
+            let itemKey = e.target.parentElement.dataset.key;
+            toggleDone(itemKey);
+        }
+    });
 
     let isChecked = currentTodoItem.checked ? 'done': '';
 
@@ -41,6 +48,7 @@ function showTodoItems (currentTodoItem){
     listNode.setAttribute('data-key', currentTodoItem.id);
 
     //put the contents of the 'li' element made above
+    //2.27.23 Find a delete svg icon to place in button spot
     listNode. innerHTML = `
     <input id="${currentTodoItem.id}" type="checkbox"/>
     <label for="${currentTodoItem.id}" class="tick js-tick"></label>
@@ -55,24 +63,6 @@ function showTodoItems (currentTodoItem){
         //Appends the element to DOM of listUL
         listUL.append(listNode);
 
-
-    // let titleInfo = document.createElement("li");
-    // titleInfo.innerHTML = currentTodoItem.title;
-    // let descriptionInfo = document.createElement("p");
-    // descriptionInfo.innerHTML = currentTodoItem.description;
-    // let dueDateInfo = document.createElement("p");
-    // dueDateInfo.innerHTML = currentTodoItem.dueDate
-    // let prioritiyInfo = document.createElement("p");
-    // prioritiyInfo.innerHTML = currentTodoItem.priortity;
-
-    // //return display string files into a div 
-    // let todoInformation = document.createElement("div");
-    // todoInformation.appendChild(titleInfo);
-    // todoInformation.appendChild(descriptionInfo);
-    // todoInformation.appendChild(dueDateInfo);
-    // todoInformation.appendChild(prioritiyInfo);
-
-    // return listDiv.appendChild(todoInformation);
 }
 
 function addTodoItems (createTodoItems){
@@ -109,18 +99,24 @@ function getToDoItemsDetails() {
 
 };
 
+//added inside the showTodoItems function 2/24/23
+function toggleDone(){
+    //findIndex = array method returning position of element in that array
+
+    let index = items.findIndex( item => item.id === Number(key));
+        //Locates the todo item in the Items array and set its checked
+        //property to opposite. True will become false and vice versa
+
+        items[index].checked = !items[index].checked;
+        showTodoItems(items[index]);
+};
 
 //reference Library/Book app on removing/changing items from DOM (2/6/23)
 function removeTodoItems() {
 
 };
 
-function todoComplete (){
-    //could add into changePriority to green completed
-};
 
-function changePriortiy () {
-    //could combine with completed priory 
-};
+
 
 
