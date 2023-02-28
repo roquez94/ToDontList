@@ -6,26 +6,20 @@ export {getToDoItemsDetails};
 //..notes and checklist
 let items = [];
 
-let todoItems = function (title,description,dueDate,checked, id) {
-    this.title = title;
-    this.description = description;
-    this.dueDate = dueDate;
-    this.checked = {checked: false};
-    this.id = id;
+ function addTodoItems (title,description,dueDate) {
+   let todoItems = {
+        title,
+        description,
+        dueDate,
+        checked: false,
+        id: Date.now(),
+    };
 
-    return {title, description, dueDate, checked, id};
-};
-
-//needed to make the todo items ... 
-
-function createTodoItems (title,description,dueDate,checked, id) {
-
-    let currentTodoItem = new todoItems(title,description,dueDate,checked, id);
-    
-    return currentTodoItem;
-};
-
-
+    items.push(todoItems);
+    showTodoItems(todoItems);
+    console.log(todoItems);  
+ }
+ 
 //shows users input
 function showTodoItems (currentTodoItem){
 
@@ -65,11 +59,6 @@ function showTodoItems (currentTodoItem){
 
 }
 
-function addTodoItems (createTodoItems){
-    items.push(createTodoItems);
-    showTodoItems(createTodoItems);
-    console.log(createTodoItems);  
-};
 
 //2.23.23 Update to clear form after submission
 //or make new function to clear form after submission
@@ -80,19 +69,14 @@ function getToDoItemsDetails() {
         //prevent page refresh when form submits
         e.preventDefault();
         //selects text input for each part
-        let newItems;
-
         let title = document.querySelector('#title').value;
         let description = document.querySelector('#description').value;
         let dueDate = document.querySelector('#duedate').value;
-        let checked = {checked: false}
-        let id = Date.now();
-
+ 
         if (title !== ''){
-            newItems = createTodoItems(title,description,dueDate,checked, id);
-            
-            addTodoItems(newItems);
-            console.log(newItems);
+
+            addTodoItems(title,description,dueDate);
+            console.log(addTodoItems);
                 }
         //showTodoItems(newItems);
     });
@@ -100,7 +84,7 @@ function getToDoItemsDetails() {
 };
 
 //added inside the showTodoItems function 2/24/23
-function toggleDone(){
+function toggleDone(key){
     //findIndex = array method returning position of element in that array
 
     let index = items.findIndex( item => item.id === Number(key));
