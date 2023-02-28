@@ -6,21 +6,21 @@ export {getToDoItemsDetails};
 //..notes and checklist
 let items = [];
 
-let todoItems = function (title,description,dueDate,priortity, id) {
+let todoItems = function (title,description,dueDate,checked, id) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
-    this.priortity = priortity;
+    this.checked = {checked: false};
     this.id = id;
 
-    return {title, description, dueDate, priortity, id};
+    return {title, description, dueDate, checked, id};
 };
 
 //needed to make the todo items ... 
 
-function createTodoItems (title,description,dueDate,priortity, id) {
+function createTodoItems (title,description,dueDate,checked, id) {
 
-    let currentTodoItem = new todoItems(title,description,dueDate,priortity, id);
+    let currentTodoItem = new todoItems(title,description,dueDate,checked, id);
     
     return currentTodoItem;
 };
@@ -48,7 +48,7 @@ function showTodoItems (currentTodoItem){
     listNode.setAttribute('data-key', currentTodoItem.id);
 
     //put the contents of the 'li' element made above
-    //2.27.23 Find a delete svg icon to place in button spot
+    //3.1.23 Find a delete svg icon to place in button spot
     listNode. innerHTML = `
     <input id="${currentTodoItem.id}" type="checkbox"/>
     <label for="${currentTodoItem.id}" class="tick js-tick"></label>
@@ -85,11 +85,11 @@ function getToDoItemsDetails() {
         let title = document.querySelector('#title').value;
         let description = document.querySelector('#description').value;
         let dueDate = document.querySelector('#duedate').value;
-        let priority = document.querySelector('#priority').value;
+        let checked = {checked: false}
         let id = Date.now();
 
         if (title !== ''){
-            newItems = createTodoItems(title,description,dueDate,priority, id);
+            newItems = createTodoItems(title,description,dueDate,checked, id);
             
             addTodoItems(newItems);
             console.log(newItems);
