@@ -31,5 +31,49 @@ body {
 
 input[type=text] {
     width: 100%;
-
 }
+
+input[type="checkbox"]{
+    display: none;
+}
+
+#listContainer {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#listContainer span {
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+/* shows up when completed checkbox is pressed */
+.done span {
+    text-decoration: line-through;
+}
+
+.tick {
+    width: 30px;
+    height: 30px;
+    border:3px solid #222;
+    border-radius:50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tick::before {
+    content: '✓';
+    font-size: 20px;
+    display: none;
+}
+
+.done .tick::before {
+    display: inline;
+  }
+
