@@ -92,6 +92,11 @@ function getToDoItemsDetails() {
 
             addTodoItems(title,description,dueDate);
             console.log(addTodoItems);
+            //resets form to blank and focus back to top (3.2.23)
+            title.value = '';
+            description.value ='';
+            dueDate.value = '';
+            title.focus();
                 }
         //showTodoItems(newItems);
     });
