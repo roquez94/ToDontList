@@ -31,8 +31,23 @@ function toggleDone(key){
         items[index].checked = !items[index].checked;
         showTodoItems(items[index]);
 };
+
+//deletes Todo items from DOM 3/3/23
+function removeTodo(key) {
+    //finds corresponding todo in the items array
+    let index = items.findIndex(item => item.id === Number(key));
+    //create new object property to current todo
+    //and 'deleted' property which is set to true
+    let todoItems = {
+        deleted: true,
+        ...items[index]
+    };
+    //remove the todo items from the array by filtering it out
+    items = items.filter(item => item.id !== Number(key));
+    showTodoItems(todoItems);
+};
  
-//shows users input
+//shows-renders users input
 function showTodoItems (todoItems){
 
     //grabs container to hold todo items
@@ -41,6 +56,12 @@ function showTodoItems (todoItems){
     //select the current todo item in the DOM
     let item = document.querySelector(`[data-key='${todoItems.id}']`);
 
+    //inserts remove item property
+    if (todoItems.deleted){
+        //removes item from the DOM
+        item.remove();
+        return
+    }
 
     let isChecked = todoItems.checked ? 'done': '';
 
@@ -117,13 +138,13 @@ function getToDoItemsDetails() {
             let itemKey = e.target.parentElement.dataset.key;
             toggleDone(itemKey);
         }
+
+        //Adds delete/remove todo items button
+        if (e.target.classList.contains('js-delete-todo')){
+            let itemKey = e.target.parentElement.dataset.key;
+            removeTodo(itemKey);
+        }
     });
-
-
-//reference Library/Book app on removing/changing items from DOM (2/6/23)
-function removeTodoItems() {
-
-};
 
 
 
