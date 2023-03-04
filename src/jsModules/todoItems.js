@@ -77,6 +77,17 @@ function showTodoItems (todoItems){
 
 //2.23.23 Update to clear form after submission
 //or make new function to clear form after submission
+function clearForm () {
+              //resets form to blank and focus back to top (3.2.23)
+              document.querySelector('#title').value = '';
+              document.querySelector('#description').value = '';
+              document.querySelector('#duedate').value = '';
+
+              document.querySelector('#title').focus();              
+}
+
+
+
 function getToDoItemsDetails() {
     const form = document.querySelector('#listInfo');
 
@@ -84,21 +95,15 @@ function getToDoItemsDetails() {
         //prevent page refresh when form submits
         e.preventDefault();
         //selects text input for each part
-        let title = document.querySelector('#title').value;
-        let description = document.querySelector('#description').value;
-        let dueDate = document.querySelector('#duedate').value;
+        const title = document.querySelector('#title').value;
+        const description = document.querySelector('#description').value;
+        const dueDate = document.querySelector('#duedate').value;
  
-        if (title !== ''){
-
+        if (title !== '') {
             addTodoItems(title,description,dueDate);
-            console.log(addTodoItems);
-            //resets form to blank and focus back to top (3.2.23)
-            title.value = '';
-            description.value ='';
-            dueDate.value = '';
-            title.focus();
+
+            clearForm();
                 }
-        //showTodoItems(newItems);
     });
 
 };
