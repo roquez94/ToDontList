@@ -1,4 +1,5 @@
 export {getToDoItemsDetails};
+//move to display-controller function
 //todoItems holds the other functions properties & methods
 //attempting to follow SOLID oop principles
 
