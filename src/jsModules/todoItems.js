@@ -1,5 +1,5 @@
 export {getToDoItemsDetails};
-//move to display-controller function
+//3/6/23 create new project using folders/controllers model
 //todoItems holds the other functions properties & methods
 //attempting to follow SOLID oop principles
 
