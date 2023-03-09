@@ -92,7 +92,6 @@ input[type="checkbox"]{
 .delete-todo {
     border: 2px solid rgb(207, 41, 12);
     background-color: transparent;
-    content: 'x';
     outline: dashed rgba(255, 0, 0, 0.493);
     cursor: pointer;
 }
